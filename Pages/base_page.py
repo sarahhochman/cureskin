@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 
 class BasePage:
@@ -7,12 +8,12 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
-        self.base_url = 'https://www.amazon.com/'
+        self.base_url = 'https://shop.cureskin.com/'
 
     def open_url(self, url):
         self.driver.get(url)
 
-    def find_element(self, *locator):
+    def find_element(self, locator):
         return self.driver.find_element(*locator)
 
     def find_elements(self, *locator):
@@ -23,9 +24,7 @@ class BasePage:
 
     def input_text(self, text, *locator):
         e = self.driver.find_element(*locator)
-        e.clear()
         e.send_keys(text)
-        print(f'Inputting text: {text}')
 
     def wait_for_element_click(self, *locator):
         e = self.wait.until(EC.element_to_be_clickable(locator), message=f'Element not clickable by {locator}')
@@ -40,7 +39,7 @@ class BasePage:
     def verify_text(self, expected_text, *locator):
         actual_text = self.driver.find_element(*locator).text
         assert expected_text == actual_text
-            f'Checking by locator {locator}. Expected {expected_text}, but got {actual_text}'
+        f'Checking by locator {locator}. Expected {expected_text}, but got {actual_text}'
 
     def verify_partial_text(self, expected_text, *locator):
         actual_text = self.driver.find_element(*locator).text
@@ -50,8 +49,12 @@ class BasePage:
     def verify_url_contains_query(self, query):
         self.wait.until(EC.url_contains(query))
 
-    def verify_item_displayed(self,  expected_result, *locator):
+    def verify_item_displayed(self,  expected_result, locator):
         assert self.driver.find_element(*locator).is_displayed(), f'{expected_result} does not appear'
 
-    def verify_items_displayed(self, expected_result, *locator):
+    def verify_items_displayed(self, expected_result, locator):
         assert self.driver.find_elements(*locator).is_displayed(), f'{expected_result} does not appear'
+
+    def click_enter(self, locator):
+        e = self.driver.find_element(*locator)
+        e.send_keys(Keys.ENTER)

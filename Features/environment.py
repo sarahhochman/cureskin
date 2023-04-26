@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-
 from selenium.webdriver.support.wait import WebDriverWait
 from app.application import Application
+
 
 def browser_init(context):
     """
