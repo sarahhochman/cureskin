@@ -5,6 +5,6 @@ Feature: Tests for search function
     Given Open Cureskin home page
     When Click on search
     And Input SPF into search field
-    And Click Enter
+    And Click Enter Search
     Then Product results for SPF are shown
 

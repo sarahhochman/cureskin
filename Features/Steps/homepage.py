@@ -2,8 +2,9 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 
 SEARCH = (By.CSS_SELECTOR, 'svg[class="icon icon-search modal__toggle-open"]')
-SEARCH_INPUT = (By.ID, 'Search-In-Modal')
+SEARCH_INPUT = (By.XPATH, '//div[@class="header__icons"]//search-modal[@class="header__search"]')
 CURRENT_URL = (By.XPATH, "//ul[@id='product-grid']//li//a/span")
+
 
 @given ('Open Cureskin home page')
 def open_cureskin(context):
@@ -20,9 +21,9 @@ def input_search_word(context, search_word):
     context.app.base_page.input_text(search_word, *SEARCH_INPUT)
 
 
-@when('Click Enter')
-def click_enter(context):
-    context.app.base_page.click_enter(SEARCH_INPUT)
+@when('Click Enter Search')
+def click_enter_search(context):
+    context.app.search_page.click_enter_search(SEARCH_INPUT)
 
 
 @then('Product results for {search_word} are shown')

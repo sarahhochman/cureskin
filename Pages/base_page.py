@@ -16,8 +16,8 @@ class BasePage:
     def find_element(self, locator):
         return self.driver.find_element(*locator)
 
-    def find_elements(self, *locator):
-        return self.driver.find_elements(*locator)
+    def find_elements(self, locator):
+        return self.driver.find_elements(locator)
 
     def click(self, *locator):
         self.driver.find_element(*locator).click()
@@ -55,6 +55,4 @@ class BasePage:
     def verify_items_displayed(self, expected_result, locator):
         assert self.driver.find_elements(*locator).is_displayed(), f'{expected_result} does not appear'
 
-    def click_enter(self, locator):
-        e = self.driver.find_element(*locator)
-        e.send_keys(Keys.ENTER)
+
