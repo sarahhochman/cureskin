@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.wait import WebDriverWait
 from app.application import Application
+from selenium.webdriver.chrome.options import Options
 
 
 def browser_init(context):
@@ -11,6 +12,11 @@ def browser_init(context):
     # driver = webdriver.Chrome(executable_path='/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
     service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
     context.driver = webdriver.Chrome(service=service)
+
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+
+    context.driver = webdriver.Chrome(options=chrome_options)
     # context.browser = webdriver.Safari()
     # context.browser = webdriver.Firefox()
     context.driver.wait = WebDriverWait(context.driver, 10)
