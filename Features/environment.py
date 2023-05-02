@@ -11,19 +11,20 @@ def browser_init(context):
     """
     # driver = webdriver.Chrome(executable_path='/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
     service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
-    context.driver = webdriver.Chrome(service=service)
+    #context.driver = webdriver.Chrome(service=service)
 
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-
-    context.driver = webdriver.Chrome(options=chrome_options)
+    #chrome_options = Options()
+    #chrome_options.add_argument('--headless')
+    context.driver = webdriver.Firefox(service=service)
+    #context.driver = webdriver.Chrome(options=chrome_options)
     # context.browser = webdriver.Safari()
-    # context.browser = webdriver.Firefox()
+    #context.browser = webdriver.Firefox()
     context.driver.wait = WebDriverWait(context.driver, 10)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.app = Application(driver=context.driver)
+
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
