@@ -11,20 +11,23 @@ def browser_init(context):
     """
     # driver = webdriver.Chrome(executable_path='/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
     service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
-    #context.driver = webdriver.Chrome(service=service)
+    context.driver = webdriver.Chrome(service=service)
 
     #chrome_options = Options()
     #chrome_options.add_argument('--headless')
-    context.driver = webdriver.Firefox(service=service)
+    #context.driver = webdriver.Firefox(service=service)
     #context.driver = webdriver.Chrome(options=chrome_options)
-    # context.browser = webdriver.Safari()
-    #context.browser = webdriver.Firefox()
+    context.browser = webdriver.Safari(service=service)
+    context.browser = webdriver.Firefox(service=service)
     context.driver.wait = WebDriverWait(context.driver, 10)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.app = Application(driver=context.driver)
-
+    setx BROWSERSTACK_USERNAME "sarahhochman_kwFig3"
+    setx BROWSERSTACK_ACCESS_KEY "QHFRY5ifrkEXPN2VfUcz"
+    set BROWSERSTACK_USERNAME = sarahhochman_kwFig3
+    set BROWSERSTACK_ACCESS_KEY = QHFRY5ifrkEXPN2VfUcz
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
