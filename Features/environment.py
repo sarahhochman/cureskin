@@ -12,7 +12,7 @@ def browser_init(context):
 
     ##old stuff##
     #driver = webdriver.Chrome(executable_path='/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
-    #service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
+    service = Service('/Users/svetlanalevinsohn/JobEasy/13-python-selenium-automation/chromedriver')
 
     ## different browsers ##
     # context.browser = webdriver.Safari(service=service)
@@ -27,25 +27,24 @@ def browser_init(context):
 
 
     ## Mobil Development ##
-    # mobile_emulation = {"deviceName": "Nexus 5"}
-    # chrome_options = webdriver.ChromeOptions()
-    # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-    # driver = webdriver.Remote(command_executor='https://127.0.0.1//192.168.254.9:4444/wd/hub',
-    #                          desired_capabilities=chrome_options.to_capabilities())
-    # context.driver.wait = WebDriverWait(context.driver, 10)
-
+    mobile_emulation = {"deviceName": "Nexus 5"}
+    chrome_options = Options()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    context.driver = webdriver.Chrome(options=chrome_options)
 
     ## BrowserStack ##
-    desired_cap = {
-         'browser': 'chrome',
-         'browser_version': '89',
-         'os': 'Windows',
-         'os_version': '10',
-         'name': 'test_name'
-    }
-    url = f'https://{"sarahhochman_kwFig3"}:{"QHFRY5ifrkEXPN2VfUcz"}@hub-cloud.browserstack.com/wd/hub'
-    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    # desired_cap = {
+    #     'browser': 'chrome',
+    #     'browser_version': '89',
+    #     'os': 'Windows',
+    #     'os_version': '10',
+    #     'name': 'test_name'
+    # }
+    # url = f'https://{"sarahhochman_kwFig3"}:{"QHFRY5ifrkEXPN2VfUcz"}@hub-cloud.browserstack.com/wd/hub'
+    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
+
+    ## always leave on ##
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.app = Application(driver=context.driver)
