@@ -6,7 +6,7 @@ from Pages.base_page import BasePage
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 
 
 class SignUpPage(BasePage):

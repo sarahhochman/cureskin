@@ -1,4 +1,5 @@
-#from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By
 from behave import given, when, then
 
 SEARCH = (By.CSS_SELECTOR, 'svg[class="icon icon-search modal__toggle-open"]')
@@ -6,7 +7,7 @@ SEARCH_INPUT = (By.XPATH, '//div[@class="header__icons"]//search-modal[@class="h
 CURRENT_URL = (By.XPATH, "//ul[@id='product-grid']//li//a/span")
 
 
-@given ('Open Cureskin home page')
+@given('Open Cureskin home page')
 def open_cureskin(context):
     context.app.base_page.open_url('https://shop.cureskin.com/')
 
