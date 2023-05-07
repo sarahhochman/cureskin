@@ -17,7 +17,7 @@ def browser_init(context):
     ## different browsers ##
     # context.browser = webdriver.Safari(service=service)
     # context.browser = webdriver.Firefox(service=service)
-    # context.driver = webdriver.Chrome(service=service)
+    context.driver = webdriver.Chrome(service=service)
 
 
     ## Headless on Chrome ##
@@ -27,10 +27,10 @@ def browser_init(context):
 
 
     ## Mobil Development ##
-    mobile_emulation = {"deviceName": "Nexus 5"}
-    chrome_options = Options()
-    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-    context.driver = webdriver.Chrome(options=chrome_options)
+    # mobile_emulation = {"deviceName": "Nexus 5"}
+    # chrome_options = Options()
+    # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # context.driver = webdriver.Chrome(options=chrome_options)
 
     ## BrowserStack ##
     # desired_cap = {
